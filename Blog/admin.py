@@ -1,23 +1,32 @@
 from django.contrib import admin
-from . import models
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from Blog.models import Categoria, Post, Registro_usuario
+from django.contrib.auth.models import User
 
-@admin.register(models.Post)
-class AuthorAdmin(admin.ModelAdmin):
-    list_display = ("title", "id", "status", "slug", "author")
-    p_fields = {"slug": ("title",),}
+# Register your models here.
 
+class BlogAdmin(admin.ModelAdmin):
+    readonly_fields = ('created', 'update')
 
-@admin.register(models.Comentarios)
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ("post", "name", "email", "publish", "status")
-    list_filter = ("status", "publish")
-    search_fields = ("name", "email", "content")
+admin.site.register(Categoria, BlogAdmin)
 
+class PostAdmin(admin.ModelAdmin):
+    readonly_fields = ('created', 'update')
+    list_display = ('id', 'usuario', 'Titulo', 'Imagen')
+    search_fields = ('Titulo', 'usuario')
+    list_filter = ('created', 'update')
+        
+        
+    def get_form(self, request, obj=None, **kwargs):
+        #self.exclude = ('url', )
+        form = super(PostAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['usuario'].initial = request.user
+        return form
 
-#admin.site.register(models.Post)
+admin.site.register(Post, PostAdmin)
 
-#admin.site.register(models.Comentarios)
+class Registro_usuarioAdmin(admin.ModelAdmin):
+    readonly_fields = ('clave', 'confirmar_clave', 'created', 'update')
+    list_display = ('id', 'usuario', 'mail', 'dni')
 
-admin.site.register(models.Category)
-
-
+admin.site.register(Registro_usuario, Registro_usuarioAdmin)

@@ -1,0 +1,50 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block main %}
+
+<br/>
+<br/>
+<br/>
+<br/>
+  
+<h1 style="background-color:DodgerBlue"; align="center">BUSCANDO</h1>
+
+<p> Estamos buscando en los post</p>
+
+<body>
+    {% for p in post %}
+        <li>{{p}}</li>
+    {% endfor %}
+</body>
+
+<body>
+    {% for post in object_list %}
+        <li>
+            <p>TITULO: {{post.Titulo}}</p>
+            <p>
+                <a href="{% url 'Busqueda' post.id %}">Ver</a>
+            </p>  
+        </li>
+    {% endfor %}
+</body>
+    
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        {{ formu.as_table }}
+    </table>
+    <input type="submit" value="Enviar">
+
+</form>
+
+
+
+
+
+
+
+{% endblock main %}

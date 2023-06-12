@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block main %}
+
+<br/><br/><br/><br/><br/>
+<h1 style="background-color:DodgerBlue"; align="center">Buscar Posteos por Titulo</h1>
+
+<!--<form method="GET" action="blog/resultadosbusqueda_post.html">-->
+<center>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="BUSCAR">
+</form>
+</center>
+
+{% endblock main %}

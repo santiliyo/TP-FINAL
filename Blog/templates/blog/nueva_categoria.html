@@ -1,0 +1,35 @@
+{% extends "blog/base.html" %}
+
+{% load static %}
+
+{% block main %}
+<link href="{% static 'blog/assets/css/form.css' %}" rel="stylesheet"> 
+<link href="{% static 'blog/assets/css/variables.css' %}" rel="stylesheet">
+<link href="{% static 'blog/assets/css/main.css' %}" rel="stylesheet">
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<h1 style="background-color:DodgerBlue"; align="center">CARGAR NUEVA CATEGORIA</h1>
+
+
+</style>
+<div class="form-container">  
+    <form method="post">
+    {% csrf_token %}
+    <center>
+    <table>
+        {{ formcat.as_table }}
+    </table>
+        <br/>
+    <input type="submit" value="CARGAR", class="btn btn-primary btn-flat"> 
+    </center>
+    <br><br>   
+    <div align="center">
+        <img src="{% static 'blog/assets/img/categorias.jpg' %}" alt="imagen carga" width="300" height="300">
+    </div>
+</div>
+
+{% endblock main %}

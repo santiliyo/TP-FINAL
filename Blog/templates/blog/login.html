@@ -1,0 +1,46 @@
+{% extends "blog/base.html" %}
+
+{% load static %}
+
+<title>{% block title %} LOGIN DE USUARIO {% endblock title %}</title>
+
+{% block main %}
+<link href="{% static 'blog/assets/css/form.css' %}" rel="stylesheet"> 
+<link href="{% static 'blog/assets/css/variables.css' %}" rel="stylesheet">
+<link href="{% static 'blog/assets/css/main.css' %}" rel="stylesheet">
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+<h1 style="background-color:DodgerBlue"; align="center">LOGIN DE USUARIO</h1>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="form-container">
+    <div align="center" class="photo">
+        <img src="{% static 'blog/assets/img/post-sq-6.jpg' %}" alt="imagen carga" width="200" height="200">
+        <br><br>   
+    </div>
+    <center>
+    <form method="post">
+    {% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        <!--<button type="submit">Iniciar sesión</button>-->
+        </table>
+        <br/>
+        <input type="submit" value="Login", class="btn btn-primary btn-flat">
+    </center>
+    <br><br>   
+</div>
+
+{% endblock main %}

@@ -1,12 +1,28 @@
 {% extends 'blog/base.html' %}
+
 {% load static %}
-{% block content%}
 
-<!--
-{% for post in posts %}
+{% block main %}
+
+<br/>
+<br/>
+<br/>
+<br/>
+  
+<h1 style="background-color:DodgerBlue"; align="center">BUSCAR USUARIO EN LA BASE</h1>
+
+<p> Buscando en la base</p>
     
-{{ post.title }}
-{{ post.content }}
--->
+<center>
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        {{ miFormulario.as_table }}
+    </table>
+    <br/>
+    <input type="submit" value="BUSCAR">
 
-{% endblock content %}
+</form>
+
+</center>
+{% endblock main %}

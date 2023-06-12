@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block main %}
+
+<br/><br/><br/><br/><br/>
+{% if posts %}
+<h1 style="background-color:DodgerBlue"; align="center">EL RESULTADO DE LA BUSQUEDA FUE EXITOSO</h1>
+<ul>
+    {% for p in posts %}
+    <li> Titulo: {{ p.Titulo }} </li>
+    <li> Usuario: {{ p.usuario }} </li>
+    <li> POSTEO: {{ p.Post }} </li>
+    <hr size="32px" color="red" />
+    {% endfor %}
+{% else %}
+<h1 style="background-color:DodgerBlue"; align="center">NO EXISTE EL POST</h1>
+{% endif %}
+</ul>
+
+{% endblock main %}

@@ -1,0 +1,46 @@
+{% extends "blog/base.html" %}
+
+{% load static %}
+
+{% block main %}
+<link href="{% static 'blog/assets/css/form.css' %}" rel="stylesheet"> 
+<link href="{% static 'blog/assets/css/variables.css' %}" rel="stylesheet">
+<link href="{% static 'blog/assets/css/main.css' %}" rel="stylesheet">
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<h1 style="background-color:DodgerBlue"; align="center">CARGAR NUEVO POST</h1>
+
+
+</style>
+<div class="form-container">  
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div align="center" class="form-field">
+        {{ formu.Titulo.label_tag }} {{ form.Titulo }}
+    </div>
+    <div align="center" class="form-field">
+        {{ form.Post.label_tag }} {{ form.Post }}
+    </div>
+    <div align="center" class="form-field">
+        {{ form.Imagen.label_tag }} {{ form.Imagen }}
+    </div>
+    <div align="center" class="form-field">
+        {{ form.categorias.label_tag }} {{ form.categorias }}
+    </div>
+    <div align="center" class="form-field">
+        {{ form.usuario.label_tag }} {{ form.usuario }}
+    </div>
+    <center>
+        <input type="submit" value="Enviar", class="btn btn-primary btn-flat"> 
+    </center>
+    <br><br>   
+    <div align="center">
+        <img src="{% static 'blog/assets/img/categorias.jpg' %}" alt="imagen carga" width="300" height="300">
+    </div>
+</div>
+
+{% endblock main %}

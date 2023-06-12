@@ -1,63 +1,59 @@
 from django.db import models
-from django.db.models.query import QuerySet
-from django.utils import timezone
+from datetime import datetime, timezone
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
+from django.utils.text import slugify
 
-#class Post(models.Model):
-#    title = models.CharField(max_length=200)
-#    content = models.TextField()
-#    created_at = models.DateTimeField(auto_now_add=True)
+# Create your models here.
 
-class Category(models.Model):
-    name = models.CharField(max_length=100)
+class Registro_usuario(models.Model):
+    usuario=models.CharField(max_length=70, verbose_name="usuario", unique=True)
+    clave=models.CharField(max_length=8, verbose_name="clave")
+    confirmar_clave=models.CharField(max_length=8, verbose_name="confirmar_clave")
+    mail=models.EmailField(max_length=40)
+    dni=models.CharField(max_length=8, verbose_name="dni", unique=True)
+    created=models.DateTimeField(auto_now_add=True)
+    update=models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+       verbose_name='Registro'
+       verbose_name_plural='Registros'
+       ordering = ['usuario']
 
     def __str__(self):
-        return self.name
-    
-    
+      return self.usuario
+
+class Categoria(models.Model):
+    Nombre=models.CharField(max_length=70, verbose_name="Nombre", unique=True)
+    created=models.DateTimeField(auto_now_add=True)
+    update=models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+       verbose_name='Categoria'
+       verbose_name_plural='Categorias'
+       ordering = ['Nombre']
+
+    def __str__(self):
+      return self.Nombre
+
 class Post(models.Model):
-
-    class PostObjects(models.Manager):
-        def get_queryset(self) -> QuerySet:
-            return super().get_queryset().filter(status='published')
-        
-    options = (
-        ('borrador', 'Borrador'),
-        ('published', 'published'),
-    )
-        
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, default=1)
-    title = models.CharField(max_length=255)
-    content = models.TextField()    
-    slug = models.SlugField(max_length=250, unique_for_date='published', null=False, unique=True)
-    published = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
-    status = models.CharField(max_length=10, choices=options, default='borrador')
-    objects = models.Manager()
-    postobjects = PostObjects()
+    Titulo=models.CharField(max_length=150, verbose_name="Titulo", unique=True, default="Titulo")
+    Post = models.TextField(max_length=8000, verbose_name="Contenido", default="Ingresar Contenido:")
+    Imagen=models.ImageField(upload_to="blog", blank=True, null=True, default = None)
+    usuario=models.ForeignKey(Registro_usuario, on_delete=models.CASCADE)
+    categorias=models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    created=models.DateTimeField(auto_now_add=True)
+    update=models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ('published', )
+       verbose_name='Post'
+       verbose_name_plural='Posts'
+       ordering = ['update']
 
     def __str__(self):
-        return self.title
-    
+      return '%s - %s' % (self.Titulo, self.created)
 
-class Comentarios(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comentarios')
-    name = models.CharField(max_length=50)
-    email = models.EmailField()
-    content = models.TextField()
-    publish = models.DateTimeField(auto_now_add=True)
-    status = models.BooleanField(default=True)
-
-    class Meta:
-        ordering = ('publish', )
-
-    def __str__(self):
-        return f"Comentarios por {self.name}"
-    
-
-
-
+    def save(self, *args, **kwargs):
+        self.url = slugify(self.Titulo)
+        super(Post, self).save(*args, **kwargs)
 

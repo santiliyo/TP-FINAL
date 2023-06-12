@@ -1,0 +1,34 @@
+.form-container .centered-form{
+    margin: 0 auto;
+    width: 50%; /* Ajusta el ancho del formulario según tus necesidades */
+    display: flex; /* align-items: flex-start; */
+    align-items: center;
+}
+
+.container {
+    display: flex; /* align-items: flex-start; */
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+}
+.photo {
+    grid-column: 1;
+}
+
+.right-column {        
+    flex: 0 0 auto;       
+    margin-right: 10px;    
+}
+
+.form-field {
+    margin-bottom: 10px;
+}
+
+.box {
+    border: 1px solid #e74d4d; /* Establece un borde sólido de 1px con color #ccc */
+    padding: 20px; /* Ajusta el espacio interno (padding) según tus necesidades */
+    background-color: #aaa5a5; /* Establece un color de fondo para el recuadro */
+}
+
+
+  
+  
