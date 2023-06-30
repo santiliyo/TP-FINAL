@@ -26,6 +26,8 @@ PERFIL DE USUARIO ---> Muestra los datos del perfil
 |
 |__Cambiar password ---> permite cambiar la clave al usuario logueado.
 |
+|__Eliminar Perfil
+|
 |__Cerrar Sesion ---> cierra sesion del usuario logueado.
 
 
