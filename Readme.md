@@ -39,6 +39,6 @@ About ---> Diseñado por ... - Se agregó link a otra web.
 
 ADMIN:
 Usuario: root
-clave: coder123
+clave ---> en la descripción de la entrega.
 
 
