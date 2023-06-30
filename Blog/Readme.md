@@ -34,8 +34,6 @@ PERFIL DE USUARIO ---> Muestra los datos del perfil
 Footer:
 About ---> Diseñado por ... - Se agregó link a otra web.
 
-ADMIN:
-Usuario: root
-clave: coder123
+
 
 
