@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-s6y!lyf35jcv9&413vaz)6#8y%*09sjw_r&^0i6tkc%n5%n@gm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ["192.168.0.24"]
+#ALLOWED_HOSTS = [""]
 ALLOWED_HOSTS = []
 
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Blog',
+    'usuarios',
 ]
 
 
@@ -62,7 +63,7 @@ ROOT_URLCONF = 'Blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,18 +133,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-#STATICFILES_DIR = (
-#    os.path.join(BASE_DIR, 'Blog/static'),
-#
-#)
-'''
-EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_USE_TLS=True
-EMAIL_PORT=587
-EMAIL_HOST_USER=''
-EMAIL_HOST_PASSWORD=""
-'''
+
 MEDIA_URL='/media/'
 
 

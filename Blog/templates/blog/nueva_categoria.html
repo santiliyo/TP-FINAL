@@ -1,11 +1,9 @@
-{% extends "blog/base.html" %}
+{% extends 'base.html' %}
 
 {% load static %}
 
 {% block main %}
-<link href="{% static 'blog/assets/css/form.css' %}" rel="stylesheet"> 
-<link href="{% static 'blog/assets/css/variables.css' %}" rel="stylesheet">
-<link href="{% static 'blog/assets/css/main.css' %}" rel="stylesheet">
+
 
 <br/>
 <br/>
@@ -13,9 +11,12 @@
 <br/>
 
 <h1 style="background-color:DodgerBlue"; align="center">CARGAR NUEVA CATEGORIA</h1>
-
-
-</style>
+<center>
+{% if mensaje %}
+    <p>{{ mensaje }}</p>
+{% endif %}   
+</center>
+    </form>
 <div class="form-container">  
     <form method="post">
     {% csrf_token %}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  {% load static %}
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{% block title %} {% endblock title %}</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'blog/assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'blog/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!--<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500family=Inter:wght@400;500family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700display=swap" rel="stylesheet">-->
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'blog/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'blog/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'blog/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'blog/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'blog/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS Files -->
+  <link href="{% static 'blog/assets/css/variables.css' %}" rel="stylesheet">
+  <link href="{% static 'blog/assets/css/main.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="{% url 'inicio' %}" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>Blog</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{% url 'inicio' %}">NO_tici_AS</a></li>
+          <li class="dropdown"><a href=""><span>Categorias</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="{% url 'Python' %}">Python</a></li>
+              <li><a href="{% url 'Django' %}">Django</a></li>
+              <li><a href="{% url 'Windows' %}">Windows</a></li>
+              <li><a href="{% url 'Linux' %}">Linux</a></li>    
+            </ul>
+          <li><a href="{% url 'Contacto' %}">Contacto</a></li>  
+          {% if user.is_authenticated %}
+          <li class="dropdown"><a href="{% url 'Posteos' %}"><span>POSTEOS de Usuarios</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="{% url 'Busqueda_post' %}">Buscar posteos</a></li>
+              <li><a href="{% url 'Nueva_categoria' %}">Nueva categoria</a></li>
+              <li><a href="{% url 'Carga' %}">Nuevo posteo</a></li>  
+            </ul>
+          
+          {% endif %}
+          {% if request.user.is_authenticated %}
+          <li class="dropdown"> <a class="navbar-brand" href="{% url 'usuarios:Mostrar_perfil' %}">
+          <h6 style="background-color:DodgerBlue">Bienvenid@ &nbsp</h6> 
+          <h6 style="background-color:DodgerBlue">{{request.user.username}} &nbsp</h6>
+            {% if request.user.usuario_avatar.avatar %}
+                <img src={{request.user.usuario_avatar.avatar.url}} alt="" height="40px" class="rounded-circle">
+            {% endif %}
+            
+          </a>
+          <ul>
+            <li class="navbar-brand"><a href="{% url 'usuarios:Editar_perfil' %}">Modificar perfil</a>
+            <li class="navbar-brand"><a href="{% url 'usuarios:Cambiar_password' %}">Cambiar password</a>
+            <li class="navbar-brand"><a href="{% url 'usuarios:Eliminar_perfil' user.id %}">Eliminar cuenta</a>
+            <li class="navbar-brand"><a href="{% url 'usuarios:Logout' %}">Cerrar sesion</a>
+
+          </ul>
+          </li>
+          {% else %}
+          
+          <li class="dropdown"><a href="{% url 'usuarios:Login_usr' %}"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li class="nav-item"><a class="nav-link" href="{% url 'usuarios:Login_usr' %}">Iniciar sesión</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'usuarios:Register' %}">Crear cuenta</a></li>
+            </ul>
+          </li>
+          {% endif %}
+        </ul>
+      </nav><!-- .navbar -->
+      
+
+      <div class="position-relative">
+        <div class="search-form-wrap js-search-form-wrap">
+          <form action="" class="search-form">
+            <a href="" class="mx-2 js-search-open"><span class="bi-search"></span></a>
+            <span class="icon bi-search"></span>
+            <input type="text" placeholder="Search" class="form-control" name="query">
+            <button class="btn js-search-close"><span class="bi-x"></span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </header><!-- End Header -->
+  
+  {% block main %}
+  {% endblock main %}
+ 
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="footer-content">
+      <div class="container">
+
+        <div class="row g-5">
+          <div class="col-lg-4">
+            <h3 class="footer-heading">About Blog</h3>
+            <p>Esto es un blog realizado para el proyecto final de Coderhouse</p>
+            Diseñado por <a href="http://www.linkedin.com/in/pablo-santiago-sanchez-72750b140" class="footer-heading"><i class="bi bi-linkedin"></i> Pablo Sánchez</a>
+
+          </div>
+          <div class="col-6 col-lg-2">
+            <h3 class="footer-heading">Navigation</h3>
+            <ul class="footer-links list-unstyled">
+              <li><a href="{% url 'inicio' %}"><i class="bi bi-chevron-right"></i> Home</a></li>
+              <li><a href="{% url 'Contacto' %}"><i class="bi bi-chevron-right"></i> Contacto</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h3 class="footer-heading">Categorias</h3>
+            <ul class="footer-links list-unstyled">
+              <li><a href="{% url 'Python' %}"><i class="bi bi-chevron-right"></i> Python</a></li>
+              <li><a href="{% url 'Django' %}"><i class="bi bi-chevron-right"></i> Django</a></li>
+              <li><a href="{% url 'Windows' %}"><i class="bi bi-chevron-right"></i> Windows</a></li>
+              <li><a href="{% url 'Linux' %}"><i class="bi bi-chevron-right"></i> Linux</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4">
+            <h3 class="footer-heading">Posts Recientes</h3>
+
+            <ul class="footer-links footer-blog-entry list-unstyled">
+              <li>
+                <a href="{% url 'Single-post' %}" class="d-flex align-items-center">
+                  <img src="assets/img/post-sq-1.jpg" alt="" class="img-fluid me-3">
+                  <div>
+                    <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                    <span>5 Great Startup Tips for Female Founders</span>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a href="{% url 'Single-post' %}" class="d-flex align-items-center">
+                  <img src="assets/img/post-sq-2.jpg" alt="" class="img-fluid me-3">
+                  <div>
+                    <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                    <span>What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</span>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a href="{% url 'Single-post' %}" class="d-flex align-items-center">
+                  <img src="assets/img/post-sq-3.jpg" alt="" class="img-fluid me-3">
+                  <div>
+                    <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                    <span>Life Insurance And Pregnancy: A Working Mom’s Guide</span>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a href="{% url 'Single-post' %}" class="d-flex align-items-center">
+                  <img src="assets/img/post-sq-4.jpg" alt="" class="img-fluid me-3">
+                  <div>
+                    <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                    <span>How to Avoid Distraction and Stay Focused During Video Calls?</span>
+                  </div>
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <div class="container">
+
+        <div class="row justify-content-between">
+          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <div class="copyright">
+              © Copyright <strong><span>Blog</span></strong>. All Rights Reserved
+            </div>
+
+            <div class="credits">
+        
+            </div>
+
+          </div>
+
+          <div class="col-md-6">
+            <div class="social-links mb-3 mb-lg-0 text-center text-md-end">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'blog/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'blog/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'blog/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'blog/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'blog/assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'blog/assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

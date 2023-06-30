@@ -2,7 +2,7 @@ body{
 /*    background: #673AB7;*/
 }
 #section > * {
-    background:#bfbbc7;
+    background:#7ca0c9;
 }
 header{
     background:#512DA8;
@@ -64,6 +64,6 @@ header{
   }
   
   #mainNav {
-    background-color: rgb(112, 108, 163);
+    background-color: rgb(76, 69, 180);
     font-family: 'Raleway';
   }

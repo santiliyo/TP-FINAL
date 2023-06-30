@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Posteos de usuarios {% endblock title %}
+
+{% block main %}
+<br><br><br><br>
+<h4 style="background-color:SkyBlue"; align="center">   
+    <div>
+        <a href="{% url 'Carga' %}" class="m-2 btn btn-primary">Nuevo posteo</a>
+    </div>
+</h4>
+    {% if object_list %}
+        <div class="row">
+            {% for p in object_list %}
+                <div class="card m-2" style="width: 18rem;" >
+                    <div class="card bg-blue text-white">
+                        <div class="card-body">
+                        <center>
+                        <h7 class="card-text">{{ p.created }}</h7><br><br>
+                        <h4 class="card-title">{{ p.Titulo }}</h4>
+                        <h7 class="card-text">Categoria: {{ p.categorias }}</h7><br>
+                        <h7 class="card-text">Usuario: {{ p.usuario }}</h7><br><br>
+                        <a href="{% url 'Mostrar_posteo' p.id %}" class="btn btn-primary">Ver</a>
+                        <a href="{% url 'Editar_posteo' p.id %}" class="btn btn-primary">Editar</a>
+                        <a href="{% url 'Eliminar_posteo' p.id %}" class="btn btn-primary">Borrar</a>
+                        </center>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="card" style="width: 18rem;" >
+            <div class="card-body">
+                <p class="card-text">No se encontraron datos.</p>
+            </div>
+        </div>
+    {% endif %}
+
+<br><br><br>
+<h4 style="background-color:SkyBlue"; align="center">   
+    <div>
+        <a href="{% url 'Vista' %}" class="m-2 btn btn-primary">Ver posteos en otro formato</a>
+    </div>
+</h4>
+
+{% endblock main %}

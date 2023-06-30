@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Registro {% endblock title %}
+
+{% block main %}
+<h5 style="background-color:SkyBlue"; align="center">
+    <form method="POST" class="m-2">
+        {% csrf_token %}
+        <br><br><br><br>
+        {{ form.as_table }}
+        <input type="submit" value="Registarme" class="btn btn-primary">
+    </form>
+</h5>
+{% endblock main %}

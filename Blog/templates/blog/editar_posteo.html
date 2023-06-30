@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Editar Posteos {% endblock title %}
+
+{% block main %}
+
+<br><br><br><br>
+<center>
+    <h1 style="background-color:DodgerBlue"; align="center">EDITAR POSTEO</h1>
+
+    <form method="POST" class="m-2" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        <input type="submit" value="Editar" class="btn btn-primary">
+    </form>
+</center>
+{% endblock main %}

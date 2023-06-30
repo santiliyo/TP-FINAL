@@ -1,0 +1,26 @@
+## Caso de Prueba 1: Login de Usuario
+
+**Descripción**: Este caso de prueba verifica el proceso de login de un nuevo usuario en el sitio web.
+
+**Precondiciones**:
+- El usuario accede a la página de login.
+- El formulario de login está disponible.
+
+**Pasos**:
+1. El usuario ingresa su nombre de usuario y contraseña.
+2. El usuario hace clic en el botón "Iniciar sesion".
+3. El usuario accede al sitio.
+
+**Resultados esperados**:
+- El usuario puede ver el mensaje de "Bienvenido" con su foto de perfil o avatar.
+- El usuario puede visualizar y obtener acceso a "Posteos de usuarios", "Buscar posteos" y "Nuevos Posteos".
+
+**Datos de prueba**:
+- Nombre de usuario: papa
+- Correo electrónico: papa@gmail.com
+- Contraseña: coder123
+
+**Escenario alternativo**:
+- Si el usuario intenta acceder con un usuario o contraseña incorrecta le aparecerá el mensaje de error "Datos Incorrectos" y el botón "Vuelve a intentar" para probar un nuevo login.
+
+

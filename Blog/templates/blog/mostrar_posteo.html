@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Posteo {% endblock title %}
+
+{% block main %}
+<br><br><br>
+    {% if post %}
+        <section class="page-section" id="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 mx-auto">
+                        <div class="cta-innerv text-center rounded">
+                        <h3 class="section-heading mb-2" >
+                            <span class="section-heading-upper">
+                                {{post.Titulo}}</span><br/>
+                        </h3>
+                        </h2>
+                            <span class="section-heading-lower">
+                                {{post.Post}}</span>
+                        </h2>
+                        <br>
+                        <br>
+                        <tr>
+                        {% if post.Imagen %}
+                        <td><a title="Imagen_del_POST" href= "/media/{{ post.Imagen }}"><img src= /media/{{ post.Imagen }} width="200" height="200" /></td>
+                        {% endif %}
+                        </tr>
+                        <br>
+                        <br>
+                        <p class="mb-0 mbt">{{post.categorias}}</p>
+                        <p class="mb-0 mbt">
+                            <span class="section-heading-under">
+                                Publicado por <em><b>{{post.usuario}}</b></em>
+                                el <em> </em>
+                            </span>
+                        </p>
+                            <span class="section-heading-upper">
+                                {{post.update|date:"SHORT_DATE_FORMAT"}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <center>
+        </center>
+        <br>
+    {% else %}
+        <div class="card" style="width: 18rem;" >
+            <div class="card-body">
+                <p class="card-text">No se encontraron datos.</p>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock main %}

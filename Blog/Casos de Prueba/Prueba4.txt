@@ -1,0 +1,25 @@
+## Caso de Prueba 4: Vista, Borrado y edición de posteos
+
+**Descripción**: Este caso de prueba verifica la vista de nuevos posteos, su edición y borrado.
+
+**Precondiciones**:
+- El usuario accede a la página de vista de posteos.
+
+**Pasos**:
+1. El usuario ingresa su nombre de usuario y contraseña.
+2. El usuario acccede a "Posteos de usuarios".
+3. El sistema muestra todos los posteos ordenados por fecha en formato de tarjeta y alli puede acceder a verlos, editarlos o borrarlos si son propios.
+
+**Resultados esperados**:
+- El usuario puede acceder a visualizar todos los posteos.
+- El usuario puede editar o borrar sus posteos.
+- Si desea eliminar un posteo de otro usuario recibe el mensaje "NO TIENES PERMISO PARA ELIMINAR ESTE POSTEO."
+- Si desea editar un posteo de otro usuario recibe el mensaje "No tienes permiso para editar este posteo."
+- En el caso que edite o borre un posteo podrá verlo actualizado en el listado de posteos.
+
+**Datos de prueba**:
+- Nombre de usuario: papa
+- Contraseña: coder123
+
+
+

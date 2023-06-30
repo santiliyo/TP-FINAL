@@ -1,0 +1,28 @@
+## Caso de Prueba 2: Registro de Usuario
+
+**Descripción**: Este caso de prueba verifica el proceso de registro de un nuevo usuario en el sitio web.
+
+**Precondiciones**:
+- El usuario accede a la página de registro.
+- El formulario de registro está disponible.
+
+**Pasos**:
+1. El usuario ingresa su nombre de usuario, dirección de correo electrónico, contraseña y repetir contraseña.
+2. El usuario hace clic en el botón "Registrarse".
+3. El sistema procesa los datos y crea una nueva cuenta de usuario.
+
+**Resultados esperados**:
+- Se crea una nueva entrada en la base de datos para el usuario registrado.
+- El usuario es redirigido a la página de inicio de sesión.
+
+**Datos de prueba**:
+- Nombre de usuario: testuser
+- Correo electrónico: testuser@example.com
+- Contraseña: coder123
+
+**Escenario alternativo**:
+- Si el usuario intenta registrar un usuario que ya está en uso, se muestra un mensaje de error indicando que el usuario ya está registrado.
+
+**Notas adicionales**:
+- Se deben validar los campos de entrada para garantizar que cumplan con los requisitos de formato y longitud.
+- Se debe verificar la fortaleza de la contraseña y requerir una combinación de caracteres segura.

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Eliminar Posteos {% endblock title %}
+
+{% block main %}
+<br><br><br><br>
+<center>
+<h1 style="background-color:DodgerBlue"; align="center">DESEA ELIMINAR EL POSTEO ???</h1>
+    <form action="{% url 'Eliminar_posteo' object.id %}" method="POST" class="m-2">
+        {% csrf_token %}
+        <p>Presione confirmar para eliminarlo o cancelar para volver al posteo</p>
+        <input type="submit" value="Confirmar" class="btn btn-primary">
+        <button type="button" onclick="goBack()" class="btn btn-secondary">Cancelar</button>
+    </form>
+</center>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% endblock main %}

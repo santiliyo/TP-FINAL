@@ -1,0 +1,27 @@
+## Caso de Prueba 3: Modificar Perfil
+
+**Descripción**: Este caso de prueba verifica el proceso de edición de un perfil de usuario en el sitio web.
+
+**Precondiciones**:
+- El usuario accede a la página de editar cuenta.
+- El formulario de edición está disponible.
+
+**Pasos**:
+1. El usuario ingresa su nombre de usuario y contraseña.
+2. El usuario hace clic en "Modificar Perfil".
+3. El usuario puede modificar email, Nombre, Apellido y avatar.
+4. El usuario puede modificar también la password.
+5. El sistema procesa los datos y modifica la cuenta de usuario.
+
+**Resultados esperados**:
+- Se modifican datos en la base para el usuario registrado/editado.
+- El usuario es redirigido a una página que muestra los datos de su perfil.
+
+**Datos de prueba**:
+- Nombre de usuario: pupu
+- Contraseña: coder123
+
+
+**Notas adicionales**:
+- Para el cambio de password se deben validar los campos de entrada para garantizar que cumplan con los requisitos de formato y longitud.
+- También se debe verificar la fortaleza de la contraseña y requerir una combinación de caracteres segura.

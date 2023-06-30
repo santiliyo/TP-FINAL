@@ -1,23 +1,17 @@
-{% extends "blog/base.html" %}
+{% extends 'base.html' %}
 
 {% load static %}
 
-{% block main %}
-
 <br> <br> 
-<html>
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Agregar Nuevo Posteo</title>
+
+   
+<br><br>
+<title>{% block title %} Agregar Nuevo Posteo {% endblock title %}</title>
       
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{% static 'blog/assets/css/mainblog.css' %}"> 
-
-</head>   
          
-
+{% block main %}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{% static 'blog/assets/css/mainblog.css' %}">
 
     <section class="page-section cta" id="section">
         <div class="container" style="text-align: center;">
@@ -47,6 +41,8 @@
                     </h2>
                     <br>
                     <tr>
+                    <br>
+                    <br>
                     {% if post.Imagen %}
                     <td><a title="Imagen_del_POST" href= "media/{{ post.Imagen }}"><img src= media/{{ post.Imagen }} width="200" height="200" /></td>
                     {% endif %}
@@ -70,6 +66,5 @@
     </section>
     {% endfor %}     
                     
-</html>
 
 {% endblock main %}
